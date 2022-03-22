@@ -1,8 +1,22 @@
 {
   "cactus-man": {
+    "name": "Cactus Man",
     "maxHp": 100,
-    "moves": [
-      "quick-attack"
-    ]
+    "assets": {
+      "front": {
+        "happy": "https://cdn.discordapp.com/attachments/945417344656752712/955897746517266472/happy.png"
+      }
+    },
+    "moves": ["quick-attack", "poison"]
+  },
+  "blocky": {
+    "name": "Blocky",
+    "maxHp": 130,
+    "assets": {
+      "front": {
+        "happy": "https://cdn.discordapp.com/attachments/945417344656752712/955897516996558898/idle.png"
+      }
+    },
+    "moves": ["quick-attack", "poison"]
   }
 }

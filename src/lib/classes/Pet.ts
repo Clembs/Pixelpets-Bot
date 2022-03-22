@@ -3,15 +3,22 @@ import { Collection } from 'discord.js';
 import { PetMove } from './PetMove';
 
 export interface PetAssets {
-  front: string;
-  happy: string;
-  hurt: string;
-  angry: string;
-  faint: string;
-  super: string;
+  front: {
+    idle: string;
+    happy: string;
+    hurt: string;
+    angry: string;
+    faint: string;
+  };
+  back: {
+    idle: string;
+    super: string;
+    hurt: string;
+  };
 }
 
 export class Pet {
+  public id: string;
   public name: string;
   public hp: number;
   public maxHp: number;
@@ -20,16 +27,18 @@ export class Pet {
   public assets: PetAssets;
   public moves: Collection<string, PetMove>;
 
-  constructor(pet: any) {
-    const dbPet = pets[pet.name];
+  constructor(pet: Partial<Pet>) {
+    const dbPet = pets[pet.id];
+    const moves: Collection<string, PetMove> = new Collection();
 
-    this.name = pet.name;
+    this.id = pet.id;
+    this.name = dbPet.name;
     this.hp = pet.hp;
     this.maxHp = dbPet.maxHp;
     this.exp = pet.exp;
     this.level = pet.level;
     this.assets = dbPet.assets;
-    this.moves = new Collection();
-    dbPet.moves.map((move) => this.moves.set(move.name, new PetMove(move)));
+    dbPet.moves.forEach((move) => moves.set(move, new PetMove(move)));
+    this.moves = moves;
   }
 }

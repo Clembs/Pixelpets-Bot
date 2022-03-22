@@ -14,6 +14,7 @@ const getCooldown = {
 };
 
 export class PetMove {
+  public id: string;
   public name: string;
   public level: 1 | 2 | 3 | 'SUPER';
   public cooldown: number;
@@ -23,6 +24,7 @@ export class PetMove {
 
   constructor(moveId: string) {
     const move = moves[moveId];
+    this.id = moveId;
     this.name = move.name;
     this.level = move.level;
     this.cooldown = getCooldown[move.level];
