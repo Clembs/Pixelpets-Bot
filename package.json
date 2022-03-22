@@ -1,0 +1,30 @@
+{
+  "name": "pixelpets-bot",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "npx purplet build && node dist/bot.mjs",
+    "dev": "yarn purplet build && node dist/bot.mjs --dev",
+    "db": "supabase start",
+    "build": "npx purplet build",
+    "generate": "npx prisma generate"
+  },
+  "engines": {
+    "node": "~16.x"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.10.0",
+    "change-case": "^4.1.2",
+    "dayjs": "^1.10.7",
+    "discord.js": "monbrey/discord.js#modals",
+    "dotenv": "^10.0.0",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^3.1.0",
+    "purplet": "^1.2.7"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "prettier-plugin-jsdoc": "^0.3.24",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "prisma": "^3.10.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    ".prettierignore": true,
+    ".eslintignore": true,
+    "yarn.lock": true,
+    "node_modules": false,
+    "dist": false,
+    ".prettierrc": true
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

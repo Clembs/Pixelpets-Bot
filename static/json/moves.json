@@ -1,0 +1,14 @@
+{
+  "quick-attack": {
+    "name": "Quick Attack",
+    "level": 1,
+    "type": "ATTACK",
+    "dmg": 20
+  },
+  "poison": {
+    "name": "Poison",
+    "level": 3,
+    "type": "ATTACK",
+    "dmg": 20
+  }
+}

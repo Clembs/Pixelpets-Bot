@@ -1,0 +1,8 @@
+{
+  "cactus-man": {
+    "maxHp": 100,
+    "moves": [
+      "quick-attack"
+    ]
+  }
+}

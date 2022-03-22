@@ -1,0 +1,73 @@
+{
+  "Create new Purplet slash command": {
+    "scope": "javascript,typescript",
+    "prefix": "command",
+    "body": [
+      "import { ChatCommand, OptionBuilder } from 'purplet';",
+      "import { MessageEmbed } from 'discord.js';",
+      "",
+      "export default ChatCommand({",
+      "  name: '$1',",
+      "  description: '$2',",
+      "  options: new OptionBuilder().$3('$4', '$5'),",
+      "  async handle({ $4 }) {",
+      "    $6",
+      "  },",
+      "});"
+    ],
+    "description": "Create new Purplet slash command"
+  },
+  "Create new Purplet message context menu command": {
+    "scope": "javascript,typescript",
+    "prefix": "messagectx",
+    "body": [
+      "import { MessageContextCommand } from 'purplet';",
+      "import { MessageEmbed } from 'discord.js';",
+      "",
+      "export default MessageContextCommand({",
+      "  name: '$1',",
+      "  async handle({ message }) {",
+      "    $2",
+      "  },",
+      "});"
+    ],
+    "description": "Create new Purplet message context menu command"
+  },
+  "Create new Purplet user context menu command": {
+    "scope": "javascript,typescript",
+    "prefix": "userctx",
+    "body": [
+      "import { UserContextCommand } from 'purplet';",
+      "import { MessageEmbed } from 'discord.js';",
+      "",
+      "export default UserContextCommand({",
+      "  name: '$1',",
+      "  async handle({ message }) {",
+      "    $2",
+      "  },",
+      "});"
+    ],
+    "description": "Create new Purplet user context menu command"
+  },
+  "Init a base CRBT language file": {
+    "scope": "json,jsonc",
+    "prefix": "lang",
+    "body": [
+      "{",
+      "  \"meta\": {",
+      "    \"name\": \"$1\",",
+      "    \"description\": \"$2\",",
+      "    \"options\": {",
+      "      \"$3\": \"$4\"$5",
+      "    },",
+      "    \"errors\": {",
+      "      \"$6\": \"$7\"$8",
+      "    },",
+      "    \"strings\": {",
+      "      \"$9\": \"$10\"$11",
+      "    }",
+      "  }",
+      "}"
+    ]
+  }
+}
