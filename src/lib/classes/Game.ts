@@ -4,7 +4,7 @@ import {
   MessageEmbed,
 } from 'discord.js';
 import { components, row } from 'purplet';
-import { Pet } from './Pet';
+import { UseMoveButton } from '../../modules/components/UseMoveButton';
 import { Player } from './Player';
 
 export class Game {
@@ -19,6 +19,16 @@ export class Game {
 
   changeTurn() {
     this.currentTurn = this.currentTurn === 'P1' ? 'P2' : 'P1';
+  }
+
+  renderHealthBar(player: Player) {
+    const hpPercent = Math.round(
+      (player.currentPet.hp / player.currentPet.maxHp) * 10
+    );
+    const hpBar = `${(player === this.P1 ? '🟦' : '🟥').repeat(
+      hpPercent
+    )}${'⬜'.repeat(10 - hpPercent)}`;
+    return hpBar;
   }
 
   render(): InteractionReplyOptions {
@@ -38,13 +48,13 @@ export class Game {
           })
           .addField(
             `${this.P1.user.username}'s ${this.P1.currentPet.name} \`LVL ${this.P1.currentPet.level}\``,
-            `${renderHealthBar(this.P1.currentPet)} ${this.P1.currentPet.hp}/${
+            `${this.renderHealthBar(this.P2)} ${this.P1.currentPet.hp}/${
               this.P1.currentPet.maxHp
             }`
           )
           .addField(
             `${this.P2.user.username}'s ${this.P2.currentPet.name} \`LVL ${this.P2.currentPet.level}\``,
-            `${renderHealthBar(this.P2.currentPet)} ${this.P2.currentPet.hp}/${
+            `${this.renderHealthBar(this.P2)} ${this.P2.currentPet.hp}/${
               this.P2.currentPet.maxHp
             }`
           )
@@ -54,10 +64,9 @@ export class Game {
       components: components(
         row().addComponents(
           currentUser.currentPet.moves.map((m, i) =>
-            new MessageButton()
+            new UseMoveButton(m.id)
               .setLabel(m.name)
-              .setStyle('PRIMARY')
-              .setCustomId(`ATTACK_${i + 1}`)
+              .setStyle(currentUser === this.P1 ? 'PRIMARY' : 'DANGER')
           )
         ),
         row(
@@ -74,11 +83,4 @@ export class Game {
       ),
     };
   }
-}
-
-function renderHealthBar(pet: Pet) {
-  // divide to get percentage
-  const hpPercent = Math.round((pet.hp / pet.maxHp) * 10);
-  const hpBar = `${'🟩'.repeat(hpPercent)}${'⬜'.repeat(10 - hpPercent)}`;
-  return hpBar;
 }

@@ -1,4 +1,5 @@
 import { moves } from '$lib/db';
+import { Pet } from './Pet';
 
 const move_effects = {
   poison: { color: 'PURPLE' },
@@ -30,5 +31,9 @@ export class PetMove {
     this.cooldown = getCooldown[move.level];
     this.dmg = move.dmg;
     this.effect = move.effect;
+  }
+
+  use(pet: Pet) {
+    pet.hp -= this.dmg;
   }
 }

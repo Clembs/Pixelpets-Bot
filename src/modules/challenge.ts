@@ -8,7 +8,7 @@ import {
   row,
 } from 'purplet';
 
-const activeGames: Map<string, Game> = new Map();
+export const activeGames: Map<string, Game> = new Map();
 
 export default ChatCommand({
   name: 'challenge',
@@ -46,3 +46,4 @@ export const AcceptButton = ButtonComponent({
     this.update(game.render());
   },
 });
+
